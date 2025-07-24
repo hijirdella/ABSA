@@ -55,7 +55,7 @@ if uploaded_file:
     df = df[(df['date'].dt.date >= start_date) & (df['date'].dt.date <= end_date)]
 
     # === Visualisasi Bar Chart ===
-    st.subheader(f"📊 Distribusi Sentimen per Aspek – Bar Chart ({app_name})")
+    st.subheader(f"📊 Distribusi Sentimen per Aspek – Diagram Batang ({app_name})")
     color_map = {'Negatif': '#e74c3c', 'Positif': '#3498db'}
     aspek_order = ['Lagu', 'Harga', 'Tutorial', 'Login', 'Teknis']
     sentimen_order = ['Negatif', 'Positif']
@@ -86,7 +86,7 @@ if uploaded_file:
     st.pyplot(fig)
 
     # === Pie Chart ===
-    st.subheader(f"📊 Distribusi Sentimen per Aspek – Pie Chart ({app_name})")
+    st.subheader(f"📊 Distribusi Sentimen per Aspek – Diagram Pai ({app_name})")
     fig_pie, axes = plt.subplots(1, len(aspek_order), figsize=(16, 4))
     for i, aspek in enumerate(aspek_order):
         ax = axes[i]
