@@ -5,31 +5,11 @@ import matplotlib.pyplot as plt
 
 # === Mapping Kata Kunci ke Aspek ===
 aspect_keywords = {
-    'Lagu': [
-        'song', 'songs', 'play', 'cant', 'music',
-        'like', 'fun', 'playing', 'amazing',
-        'beginner', 'beginners', 'hard',
-    ],
-    'Harga': [
-        'premium', 'pay', 'free', 'purchase', 'money', 'price',
-        'subscribe', 'subscription', 'worth', 'ads', 'trial',
-        'charged', 'payment'
-    ],
-    'Tutorial': [
-        'learn', 'learning', 'lessons', 'helpful', 'love', 'instructor',
-        'tutorial', 'teaching', 'great', 'good', 'best', 'easy',
-        'amazing', 'guide', 'gamification'
-    ],
-    'Login': [
-        'login', 'account', 'log', 'sign', 'sign in', 'sign up',
-        'cant login', 'log in', 'register', 'access', 'out',
-        'auth', 'reset', 'email', 'password'
-    ],
-    'Teknis': [
-        'tuning', 'tune', 'sound', 'mode', 'time', 'try', 'get', 'frustrating',
-        'crash', 'bug', 'glitch', 'slow', 'lag', 'freeze', 'string',
-        'fail', 'issue', 'update', 'load', 'problem', 'error', 'close'
-    ]
+    'Lagu': ['song', 'songs', 'play', 'cant', 'music', 'like', 'fun', 'playing', 'amazing', 'beginner', 'beginners', 'hard'],
+    'Harga': ['premium', 'pay', 'free', 'purchase', 'money', 'price', 'subscribe', 'subscription', 'worth', 'ads', 'trial', 'charged', 'payment'],
+    'Tutorial': ['learn', 'learning', 'lessons', 'helpful', 'love', 'instructor', 'tutorial', 'teaching', 'great', 'good', 'best', 'easy', 'amazing', 'guide', 'gamification'],
+    'Login': ['login', 'account', 'log', 'sign', 'sign in', 'sign up', 'cant login', 'log in', 'register', 'access', 'out', 'auth', 'reset', 'email', 'password'],
+    'Teknis': ['tuning', 'tune', 'sound', 'mode', 'time', 'try', 'get', 'frustrating', 'crash', 'bug', 'glitch', 'slow', 'lag', 'freeze', 'string', 'fail', 'issue', 'update', 'load', 'problem', 'error', 'close']
 }
 
 def extract_aspect(text):
@@ -94,7 +74,8 @@ if uploaded_file:
     for p in ax.patches:
         height = p.get_height()
         if height > 0:
-            ax.annotate(f'{int(height)}',
+            formatted = format(int(height), ',').replace(',', '.')
+            ax.annotate(formatted,
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='bottom', fontsize=9)
 
