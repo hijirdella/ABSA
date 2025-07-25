@@ -27,7 +27,7 @@ def map_sentiment(label):
     return None
 
 # === Setup Halaman ===
-st.set_page_config(page_title="🎵 App ABSA")
+st.set_page_config(page_title="🎵 App ABSA", layout="centered")
 st.title("🎵 App ABSA")
 
 # === Nama Aplikasi Dinamis ===
@@ -60,7 +60,7 @@ if uploaded_file:
     aspek_order = ['Lagu', 'Harga', 'Tutorial', 'Login', 'Teknis']
     sentimen_order = ['Negatif', 'Positif']
 
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(8, 5))
     sns.countplot(
         data=df,
         x='aspek',
@@ -77,8 +77,10 @@ if uploaded_file:
             formatted = format(int(height), ',').replace(',', '.')
             ax.annotate(formatted,
                         (p.get_x() + p.get_width() / 2., height),
-                        ha='center', va='bottom', fontsize=9)
+                        ha='center', va='bottom', fontsize=8, fontweight='bold')
 
+    max_count = df.groupby(['aspek', 'sentimen']).size().max()
+    ax.set_ylim(0, max_count * 1.2)
     ax.set_title(f"Distribusi Sentimen per Aspek (ABSA) – {app_name}", fontsize=14, weight='bold')
     ax.set_xlabel("Aspek")
     ax.set_ylabel("Jumlah Ulasan")
